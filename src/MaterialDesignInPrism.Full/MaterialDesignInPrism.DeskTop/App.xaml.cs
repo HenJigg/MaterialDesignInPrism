@@ -1,4 +1,5 @@
-﻿using MaterialDesignInPrism.Core.Service;
+﻿using MaterialDesignInPrism.Core.Common;
+using MaterialDesignInPrism.Core.Service;
 using MaterialDesignInPrism.DeskTop.Views;
 using MaterialDesignInPrism.DeskTop.Views.Dialogs;
 using MaterialDesignThemes.Wpf;
@@ -21,6 +22,8 @@ namespace MaterialDesignInPrism.DeskTop
         {
             containerRegistry.RegisterDialog<ShowView>();
             containerRegistry.Register<IDialogHostService, DialogHostService>();
+
+            containerRegistry.RegisterForNavigation<SkinView, SkinViewModel>();
         }
     }
 }

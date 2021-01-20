@@ -5,25 +5,30 @@ using Prism.Commands;
 using Prism.Mvvm;
 using System;
 using MaterialDesignInPrism.Core.Extensions;
+using System.Windows.Media;
+using Prism.Regions;
 
 namespace MaterialDesignInPrism.DeskTop.ViewModels
 {
     public class MainWindowViewModel : BindableBase
     {
+        private readonly IRegionManager regionManager;
         private readonly IDialogHostService dialog;
 
-        public MainWindowViewModel(IDialogHostService dialog)
+        public MainWindowViewModel(IRegionManager regionManager, IDialogHostService dialog)
         {
-            HomeCommand = new DelegateCommand(GoHome);
+            this.regionManager = regionManager;
             this.dialog = dialog;
+            HomeCommand = new DelegateCommand(GoHome);
         }
+
 
         public DelegateCommand HomeCommand { get; private set; }
 
-
-        private async void GoHome()
+        private void GoHome()
         {
-            var result = await dialog.ShowDialog("ShowView");
+            regionManager.Regions["ContentRegion"].RequestNavigate("SkinView");
+            //var result = await dialog.ShowDialog("ShowView");
         }
     }
 }

@@ -61,20 +61,11 @@
                         HorizontalAlignment="Right"
                         PlacementMode="BottomAndAlignRightEdges"
                         StaysOpen="False">
-                        <StackPanel>
-                            <StackPanel
-                                Margin="10"
-                                HorizontalAlignment="Center"
-                                Orientation="Horizontal">
-                                <TextBlock Text="浅色" Margin="0,0,10,0" />
-                                <ToggleButton x:Name="DarkModeToggleButton" />
-                                <TextBlock Text="深色" Margin="10,0,0,0" />
-                            </StackPanel>
-                        </StackPanel>
+                        <StackPanel />
                     </materialDesign:PopupBox>
 
                     <TextBlock
-                        Text="Material Design In Prism 8.0"
+                        Text="MaterialDesign In Prism8.0"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         FontSize="22" />
