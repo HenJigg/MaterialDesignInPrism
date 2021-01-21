@@ -1,5 +1,6 @@
 ﻿using MaterialDesignInPrism.Core.Config;
 using MaterialDesignInPrism.Core.Service;
+using MaterialDesignInPrism.Core.Extensions;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Regions;
@@ -45,8 +46,6 @@ namespace MaterialDesignInPrism.DeskTop.ViewModels
         }
 
         #endregion
-
-
 
         #region Method
 
@@ -94,14 +93,7 @@ namespace MaterialDesignInPrism.DeskTop.ViewModels
         {
             if (string.IsNullOrWhiteSpace(moduleName)) return;
 
-            regionManager.Regions["ContentRegion"]
-                .RequestNavigate(moduleName, arg =>
-                {
-                    if (!(bool)arg.Result)
-                    {
-                        //...
-                    }
-                });
+            var result = regionManager.Regions["ContentRegion"].Navigate(moduleName);
         }
 
         /// <summary>

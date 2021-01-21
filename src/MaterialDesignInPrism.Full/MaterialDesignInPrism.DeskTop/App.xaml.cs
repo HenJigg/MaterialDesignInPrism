@@ -22,7 +22,8 @@ namespace MaterialDesignInPrism.DeskTop
         {
             containerRegistry.RegisterDialog<ShowView>();
             containerRegistry.Register<IDialogHostService, DialogHostService>();
-
+            containerRegistry.Register<IRegionNavigationAsyncService, RegionNavigationAsyncService>();
+            containerRegistry.Register<IHostRegion, HostRegion>();
             containerRegistry.RegisterForNavigation<SkinView, SkinViewModel>();
         }
     }

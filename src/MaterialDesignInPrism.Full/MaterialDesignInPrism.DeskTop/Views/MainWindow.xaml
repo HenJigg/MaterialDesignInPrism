@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prism="http://prismlibrary.com/"
     Title="Material Design In Prism 8.0"
-    Width="1280"
+    Width="1080"
     d:Height="768"
     d:Width="1080"
     prism:ViewModelLocator.AutoWireViewModel="True"
@@ -19,10 +19,10 @@
                 <DockPanel MinWidth="200">
 
                     <ToggleButton
+                        IsChecked="{Binding ElementName=MenuToggleButton, Path=IsChecked}"
                         Margin="16"
                         HorizontalAlignment="Right"
                         DockPanel.Dock="Top"
-                        IsChecked="{Binding ElementName=MenuToggleButton, Path=IsChecked}"
                         Style="{StaticResource MaterialDesignHamburgerToggleButton}" />
 
                     <ItemsControl ItemsSource="{Binding ModuleConfigs}">
@@ -40,7 +40,7 @@
                                     Style="{StaticResource MaterialDesignFlatButton}">
                                     <StackPanel Orientation="Horizontal">
                                         <materialDesign:PackIcon Kind="{Binding Kind}" />
-                                        <TextBlock Margin="12,0" Text="{Binding Name}" />
+                                        <TextBlock Text="{Binding Name}" Margin="12,0" />
                                     </StackPanel>
                                 </Button>
                             </DataTemplate>
@@ -58,38 +58,37 @@
                     Mode="PrimaryMid">
                     <Grid>
                         <StackPanel Orientation="Horizontal">
-                            <ToggleButton
-                                x:Name="MenuToggleButton"
-                                AutomationProperties.Name="HamburgerToggleButton"
+                            <ToggleButton x:Name="MenuToggleButton"
                                 IsChecked="{Binding SelectModuleConfig.IsActive, FallbackValue=False}"
+                                AutomationProperties.Name="HamburgerToggleButton"
                                 Style="{StaticResource MaterialDesignHamburgerToggleButton}" />
 
                             <Button
-                                Margin="24,0,0,0"
-                                materialDesign:RippleAssist.Feedback="{Binding RelativeSource={RelativeSource Self}, Path=Foreground, Converter={StaticResource BrushRoundConverter}}"
-                                Command="{Binding MovePrevCommand}"
                                 Content="{materialDesign:PackIcon Kind=ArrowLeft,
                                                                   Size=24}"
+                                Command="{Binding MovePrevCommand}"
+                                Margin="24,0,0,0"
+                                materialDesign:RippleAssist.Feedback="{Binding RelativeSource={RelativeSource Self}, Path=Foreground, Converter={StaticResource BrushRoundConverter}}"
                                 Foreground="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground)}"
                                 Style="{DynamicResource MaterialDesignToolButton}"
                                 ToolTip="上一步" />
 
                             <Button
-                                Margin="16,0,0,0"
-                                materialDesign:RippleAssist.Feedback="{Binding RelativeSource={RelativeSource Self}, Path=Foreground, Converter={StaticResource BrushRoundConverter}}"
-                                Command="{Binding MoveNextCommand}"
                                 Content="{materialDesign:PackIcon Kind=ArrowRight,
                                                                   Size=24}"
+                                Command="{Binding MoveNextCommand}"
+                                Margin="16,0,0,0"
+                                materialDesign:RippleAssist.Feedback="{Binding RelativeSource={RelativeSource Self}, Path=Foreground, Converter={StaticResource BrushRoundConverter}}"
                                 Foreground="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground)}"
                                 Style="{DynamicResource MaterialDesignToolButton}"
                                 ToolTip="下一步" />
 
                             <Button
-                                Margin="16,0,0,0"
-                                materialDesign:RippleAssist.Feedback="{Binding RelativeSource={RelativeSource Self}, Path=Foreground, Converter={StaticResource BrushRoundConverter}}"
-                                Command="{Binding HomeCommand}"
                                 Content="{materialDesign:PackIcon Kind=Home,
                                                                   Size=24}"
+                                Command="{Binding HomeCommand}"
+                                Margin="16,0,0,0"
+                                materialDesign:RippleAssist.Feedback="{Binding RelativeSource={RelativeSource Self}, Path=Foreground, Converter={StaticResource BrushRoundConverter}}"
                                 Foreground="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground)}"
                                 Style="{DynamicResource MaterialDesignToolButton}"
                                 ToolTip="首页" />
@@ -103,10 +102,10 @@
                         </materialDesign:PopupBox>
 
                         <TextBlock
+                            Text="MaterialDesign In Prism8.0"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
-                            FontSize="22"
-                            Text="MaterialDesign In Prism8.0" />
+                            FontSize="22" />
                     </Grid>
                 </materialDesign:ColorZone>
                 <ContentControl prism:RegionManager.RegionName="ContentRegion" />

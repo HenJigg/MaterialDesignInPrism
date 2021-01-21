@@ -1,4 +1,5 @@
-﻿using MaterialDesignThemes.Wpf;
+﻿using MaterialDesignInPrism.Core.Common;
+using MaterialDesignThemes.Wpf;
 using Prism.Common;
 using Prism.Ioc;
 using Prism.Mvvm;
@@ -40,9 +41,17 @@ namespace MaterialDesignInPrism.Core.Service
 
             viewModel.IdentifierName = IdentifierName;
 
-            if (viewModel is IDialogHostAware aware) await aware.OnDialogOpenedAsync(parameters);
+            DialogOpenedEventHandler eventHandler = async
+                (sender, eventArgs) =>
+           {
+               var content = eventArgs.Session.Content;
+               eventArgs.Session.UpdateContent(new ProgressDialog());
+               if (viewModel is IDialogHostAware aware)
+                   await aware.OnDialogOpenedAsync(parameters);
+               eventArgs.Session.UpdateContent(content);
+           };
 
-            return (IDialogResult)await DialogHost.Show(dialogContent, viewModel.IdentifierName);
+            return (IDialogResult)await DialogHost.Show(dialogContent, viewModel.IdentifierName, eventHandler);
         }
     }
 }
